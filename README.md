@@ -95,9 +95,6 @@ The app allows users to pay using cryptocurrencies through MetaMask:
 
 ---
 
-## **Screenshots**
-
-> *Include screenshots here to showcase the UI and functionality (home, product page, cart, admin dashboard, etc).*
 
 ---
 
