@@ -1,36 +1,11 @@
-// server/models/productModel.js
-const mongoose = require('mongoose');
-
-const productSchema = mongoose.Schema(
+const products = [
   {
-    name: {
-      type: String,
-      required: true,
-      trim: true,
-    },
-    description: {
-      type: String,
-      required: true,
-    },
-    price: {
-      type: Number,
-      required: true,
-    },
-    imageUrl: {
-      type: String,
-      required: true,
-    },
-    stock: {
-      type: Number,
-      required: true,
-      default: 0,
-    },
+    name: 'Product Name',
+    description: 'Sample description',
+    price: 199.99,
+    imageUrl: 'https://example.com/image.jpg',
+    stock: 50,
   },
-  {
-    timestamps: true,  // Automatically adds createdAt and updatedAt
-  }
-);
+];
 
-const Product = mongoose.model('Product', productSchema);
-
-module.exports = Product;
+module.exports = products;

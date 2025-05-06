@@ -1,25 +1,22 @@
 const mongoose = require('mongoose');
-const Product = require('./models/productModel'); // Assuming you have a product model
+const dotenv = require('dotenv');
+const Product = require('./models/productModel'); // Only once
+const products = require('./data/products');
 const connectDB = require('./config/db');
 
-const seedProducts = async () => {
-  await connectDB();
+dotenv.config();
+connectDB();
 
-  const products = [
-    { name: "Product 1", description: "A cool product", price: 100, imageUrl: "https://via.placeholder.com/150" },
-    { name: "Product 2", description: "Another awesome product", price: 150, imageUrl: "https://via.placeholder.com/150" },
-    { name: "Product 3", description: "Yet another product", price: 200, imageUrl: "https://via.placeholder.com/150" }
-  ];
-
+const importData = async () => {
   try {
-    await Product.deleteMany(); // Optional: clear the collection before seeding
+    await Product.deleteMany();
     await Product.insertMany(products);
-    console.log("Products seeded successfully!");
+    console.log('Data Imported!');
+    process.exit();
   } catch (error) {
-    console.error("Error seeding products:", error);
-  } finally {
-    mongoose.connection.close();
+    console.error(`${error}`);
+    process.exit(1);
   }
 };
 
-seedProducts();
+importData();

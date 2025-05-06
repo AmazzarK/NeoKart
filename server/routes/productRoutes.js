@@ -1,15 +1,14 @@
-// server/routes/productRoutes.js
 const express = require('express');
-const Product = require('../models/productModel');
 const router = express.Router();
+const Product = require('../models/Product');
 
-// Get all products
+// GET /products
 router.get('/', async (req, res) => {
   try {
     const products = await Product.find();
     res.json(products);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
+  } catch (err) {
+    res.status(500).json({ error: 'Server error' });
   }
 });
 
